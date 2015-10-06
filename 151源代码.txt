@@ -1,0 +1,46 @@
+public class Solution {
+    public String reverseWords(String juzi) {
+       
+		if(juzi == null){
+			return null;
+		}
+		
+		String[] word = juzi.split(" ");
+	
+	/*	System.out.println(word[0]);
+		System.out.println(word[1]);*/
+		/*System.out.println(word.length);*/
+		int i=0,n=word.length,j=word.length;		
+		String b;
+		
+		while(i<n){
+			if(word[i].equals("")){
+				
+				for(j=i;j<n-1;j++){
+					word[j]=word[j+1];
+				}
+				n--;
+				i=0;
+			}else{
+			 i++;   
+			}
+		}
+		
+		
+		for(i=0;i<n/2;i++){
+			b = word[i];
+			word[i] = word[j-1];
+			word[j-1] = b;
+			j--;
+		}
+		b="";
+		for(i=0;i<n;i++){
+			 if(i==n-1){
+			       b = b+word[i]; 
+			    }else{
+			        b= b+word[i]+" ";
+			    }
+		}
+		return b;
+    }
+}
