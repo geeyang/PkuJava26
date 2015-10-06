@@ -1,0 +1,40 @@
+public class Solution {
+    public boolean isHappy(int n) {
+        int weishu=0,m=0,i=0;
+		boolean x=true;
+		int[] shu = new int[100];
+		int[] zhi = new int[100];
+		for(i=0;i<100;i++){
+			shu[i]=0;
+			zhi[i]=0;
+		}
+		
+		while(x){
+			i=0;
+			weishu=0;
+			while(n!=0){
+				zhi[i]=n%10;
+				n=n/10;
+				weishu++;
+				i++;
+			}
+			for(i=0;i<weishu;i++){
+				shu[m]=shu[m]+zhi[i]*zhi[i];
+			}
+			if(shu[m]==1){
+				break;
+			}else{
+				for(i=0;i<m;i++){
+					if(shu[i]==shu[m]){
+						x = false;
+						break;
+					}
+				}
+				n = shu[m];
+				m++;
+				
+			}
+		}
+		return x;
+    }
+}
