@@ -1,0 +1,51 @@
+import java.util.*;
+public class leetcode118 {
+	public static void main(String[] args){
+		Scanner in= new Scanner(System.in);
+		
+		System.out.println("ÇëÊäÈëĞĞÊı");
+		int n= in.nextInt();
+		
+		int i,j;
+		int[][] number=new int[100][100];
+		for(i=0;i<100;i++){
+			for(j=0;j<100;j++){
+				number[i][j] = 0;
+			}
+		}
+		
+		number[0][0]=1;
+		number[1][0]=1;
+		number[1][1]=1;
+		for(i=2;i<n;i++){
+			number[i][0]=1;
+			number[i][i]=1;
+			
+			for(j=1;j<i;j++){
+				number[i][j]=number[i-1][j-1]+number[i-1][j];
+			}
+		}
+		int m;
+		System.out.print("[");
+		for(i=0;i<n;i++){
+			System.out.println();
+			m=0;
+			while(m<n-i){
+				System.out.print(" ");
+				m++;
+			}
+			System.out.print("[");
+			for(j=0;j<=i;j++){
+				if(j==i){
+					System.out.print(number[i][j]);
+				}
+				else{
+					System.out.print(number[i][j]+",");
+				}
+			}
+			System.out.println("],");
+		}
+		System.out.println("]");
+		
+	}
+}
