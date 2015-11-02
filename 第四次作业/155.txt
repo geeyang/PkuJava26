@@ -1,0 +1,36 @@
+class MinStack {
+    Stack<Integer> s = new Stack<Integer>();
+    int[] min=new int[100000];
+    int n=0;
+    
+    public void push(int x) {
+        if(n==0){
+            min[n]=x;
+            n++;
+            s.push(x);
+            return ;
+        }else if(x<=min[n-1]){
+             min[n]=x;
+            n++;
+        }
+        s.push(x);
+        return ;
+        
+    }
+
+    public void pop() {
+        if(min[n-1]==s.peek()){
+            min[n-1]=0;
+            n--;
+        }
+        s.pop();
+    }
+
+    public int top() {
+       return s.peek();
+    }
+
+    public int getMin() {
+        return min[n-1];
+    }
+}
