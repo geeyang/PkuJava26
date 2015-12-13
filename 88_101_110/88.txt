@@ -1,0 +1,33 @@
+public class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int yunxing=0;
+        if(m==0){
+            for(int i=0;i<n;i++){
+                nums1[i]=nums2[i];
+            }
+            return ;
+        }
+        if(n==0){
+            return ;
+        }
+        int j;
+        for(int i=0;i<n;i++){
+            for(j=yunxing;j<m+i;j++){
+                if(nums1[j]>=nums2[i]){
+                    yunxing=j;
+                    for(int length=m+i;length>yunxing;length--){
+                        nums1[length]=nums1[length-1];
+                    }
+                    nums1[yunxing]=nums2[i];
+                    break;
+                }
+            }
+            if(j==m+i){
+                for(int t=i;t<n;t++){
+                    nums1[m+t]=nums2[t];
+                }
+                break;
+            }
+        }
+    }
+}
